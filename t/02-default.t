@@ -1,3 +1,7 @@
+
+# XXX pass nothing -- check that the main module is used.
+# wrap simple_ini so we get the dist name and we can munge it to get the
+# module name.
 use strict;
 use warnings FATAL => 'all';
 
@@ -15,7 +19,7 @@ my $tzil = Builder->from_config(
             path(qw(source dist.ini)) => simple_ini(
                 [ GatherDir => ],
                 [ MetaConfig => ],
-                [ 'AuthorityFromModule' => { module => 'Foo::Bar' } ],
+                [ 'AuthorityFromModule' => ],
             ),
             path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
             path(qw(source lib Foo Bar.pm)) => "package Foo::Bar;\n1;\n",
@@ -33,15 +37,15 @@ is(
 cmp_deeply(
     $tzil->distmeta,
     superhashof({
-        x_authority_from_module => 'Foo::Bar',
-        x_permissions_from_module => 'Foo::Bar',
+        x_authority_from_module => 'Foo',
+        x_permissions_from_module => 'Foo',
         x_Dist_Zilla => superhashof({
             plugins => supersetof(
                 {
                     class => 'Dist::Zilla::Plugin::AuthorityFromModule',
                     config => {
                         'Dist::Zilla::Plugin::AuthorityFromModule' => {
-                            module => 'Foo::Bar',
+                            module => 'Foo',
                         },
                     },
                     name => 'AuthorityFromModule',
@@ -52,6 +56,12 @@ cmp_deeply(
     }),
     'plugin metadata, including dumped configs',
 ) or diag 'got distmeta: ', explain $tzil->distmeta;
+
+cmp_deeply(
+    $tzil->log_messages,
+    superbagof('[AuthorityFromModule] no module provided; defaulting to the main module'),
+    'logged a diagnostic message about defaulting the module name',
+);
 
 diag 'got log messages: ', explain $tzil->log_messages
     if not Test::Builder->new->is_passing;
