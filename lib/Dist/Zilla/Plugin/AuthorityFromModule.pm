@@ -22,19 +22,20 @@ has _module_name => (
     default => sub {
         my $self = shift;
 
-        my $file;
         if (my $module = $self->module)
         {
-            $file = first { $self->_package_from_file($_) eq $module } @{ $self->zilla->files };
-        }
-        else
-        {
-            $self->log_debug('no module provided; defaulting to the main module');
-            $file = $self->zilla->main_module;
+            if (my $file = first { $self->_package_from_file($_) eq $module } @{ $self->zilla->files })
+            {
+                $self->log_debug('found \'' . $module . '\' in ' . $file->name);
+                return $module;
+            }
         }
 
-        $self->log_debug('extracting the package name from ' . $file->name);
-        $self->_package_from_file($file);
+        $self->log_debug('no module provided; defaulting to the main module');
+
+        my $file = $self->zilla->main_module;
+        my $module = $self->_package_from_file($file);
+        $module;
     },
 );
 

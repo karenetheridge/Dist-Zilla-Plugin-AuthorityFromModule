@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+          - make one of the code paths more efficient
 
 0.001     2014-08-29 03:43:33Z
           - Initial release.
