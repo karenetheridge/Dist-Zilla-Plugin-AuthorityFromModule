@@ -108,7 +108,7 @@ The module name to copy permissions from. It must exist in the distribution,
 and exist in the PAUSE permissions table (see
 L<peek at PAUSE permissions|https://pause.perl.org/pause/authenquery?ACTION=peek_perms>).
 
-This config is optional; it defaults to the L<main module|Dist::Zilla/main module> in the distribution.
+This config is optional; it defaults to the L<main module|Dist::Zilla/main_module> in the distribution.
 
 =for Pod::Coverage metadata
 
