@@ -24,7 +24,10 @@ has _module_name => (
 
         if (my $module = $self->module)
         {
-            if (my $file = first { $self->_package_from_file($_) eq $module } @{ $self->zilla->files })
+            if (my $file = first {
+                    $_->name =~ m{^lib/} and $_->name =~ m{\.pm$}
+                    and $self->_package_from_file($_) eq $module }
+                @{ $self->zilla->files })
             {
                 $self->log_debug('found \'' . $module . '\' in ' . $file->name);
                 return $module;
