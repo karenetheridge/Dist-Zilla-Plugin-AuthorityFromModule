@@ -59,7 +59,10 @@ cmp_deeply(
 
 cmp_deeply(
     $tzil->log_messages,
-    superbagof('[AuthorityFromModule] no module provided; defaulting to the main module'),
+    superbagof(
+        '[AuthorityFromModule] no module provided; defaulting to the main module',
+        '[AuthorityFromModule] extracted package \'Foo\' from lib/Foo.pm',
+    ),
     'logged a diagnostic message about defaulting the module name',
 );
 

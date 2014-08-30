@@ -31,6 +31,12 @@ is(
 );
 
 cmp_deeply(
+    $tzil->log_messages,
+    superbagof('[AuthorityFromModule] found \'Foo::Bar\' in lib/Foo/Bar.pm'),
+    'filename containing the module is logged',
+);
+
+cmp_deeply(
     $tzil->distmeta,
     superhashof({
         x_authority_from_module => 'Foo::Bar',

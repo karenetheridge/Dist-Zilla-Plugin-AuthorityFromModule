@@ -29,12 +29,15 @@ has _module_name => (
                 $self->log_debug('found \'' . $module . '\' in ' . $file->name);
                 return $module;
             }
+
+            $self->log_fatal('the module \'' . $module . '\' cannot be found in the distribution');
         }
 
         $self->log_debug('no module provided; defaulting to the main module');
 
         my $file = $self->zilla->main_module;
         my $module = $self->_package_from_file($file);
+        $self->log_debug('extracted package \'' . $module . '\' from ' . $file->name);
         $module;
     },
 );
