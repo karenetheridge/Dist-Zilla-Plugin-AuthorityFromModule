@@ -108,6 +108,28 @@ Note that these fields aren't actually supported yet by
 L<PAUSE|http://pause.perl.org> -- that's still to come (as is figuring out
 which field name everyone prefers, and ditching the other one).
 
+=head1 MOTIVATION
+
+The idea is that this is a more useful piece of data for
+L<PAUSE|http://pause.perl.org> than C<x_authority>.  Here is how the release
+process works with C<x_authority>, using L<Moose> as an example:
+
+=for stopwords STEVAN maint
+
+=for :list
+* I (ETHER) release a new version of L<Moose> with a new module added, C<Moose::Foo>
+* normally, L<PAUSE|http://pause.perl.org> would give me "first-come" permissions on this module, but since L<PAUSE|http://pause.perl.org> sees the C<< x_authority => 'cpan:STEVAN' >> metadata, it instead gives "first-come" to STEVAN, and "co-maint" to me
+* but now none of the other members of the Moose cabal can do the next Moose release and get the new version of C<Moose::Foo> indexed - they need to contact STEVAN and ask him to give them co-maint at L<http://pause.perl.org>
+
+So, we can see the only gain is that STEVAN automatically gets permission on
+the new module, but still, no one else does.  Now, let's look at how
+C<x_authority_from_module> would work:
+
+=for :list
+* I (ETHER) release a new version of L<Moose> with a new module added, C<Moose::Foo>
+* L<PAUSE|http://pause.perl.org> sees the C<< x_authority_from_module => 'Moose' >> metadata and looks up the permissions for the L<Moose> module, and, L<finding many authors|https://pause.perl.org/pause/authenquery?pause99_peek_perms_by=me&pause99_peek_perms_query=Moose&pause99_peek_perms_sub=Submit>, copies all those permissions to L<Moose::Foo>: STEVAN gets first-come, and everyone else (ETHER included) gets co-maint.
+* now any of the other members of the Moose cabal can do the next Moose release and everything will be properly indexed, with no manual intervention required.
+
 =head1 CONFIGURATION OPTIONS
 
 =head2 C<module>
@@ -116,8 +138,7 @@ The module name to copy permissions from. It must exist in the distribution,
 and exist in the L<PAUSE|http://pause.perl.org> permissions table (see
 L<peek at PAUSE permissions|https://pause.perl.org/pause/authenquery?ACTION=peek_perms>).
 
-This config is optional; it defaults to the L<main module|Dist::Zilla/main_module>
-in the distribution.
+This config is optional; it defaults to the L<main module|Dist::Zilla/main_module> in the distribution.
 
 =for Pod::Coverage metadata
 
