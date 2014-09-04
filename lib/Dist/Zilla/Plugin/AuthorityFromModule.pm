@@ -100,22 +100,24 @@ In your F<dist.ini>:
 
 This is a L<Dist::Zilla> plugin that adds the C<x_authority_from_module> and
 C<x_permissions_from_module> keys to your distribution metadata, indicating
-from which module to copy PAUSE permissions when a module in your distribution
-enters the PAUSE index that has not ever previously been indexed.
+from which module to copy L<PAUSE|http://pause.perl.org> permissions when a
+module in your distribution enters the L<PAUSE|http://pause.perl.org> index
+that has not ever previously been indexed.
 
-Note that these fields aren't actually supported yet by PAUSE - that's still
-to come (as is figuring out which field name everyone prefers, and ditching
-the other one).
+Note that these fields aren't actually supported yet by
+L<PAUSE|http://pause.perl.org> -- that's still to come (as is figuring out
+which field name everyone prefers, and ditching the other one).
 
 =head1 CONFIGURATION OPTIONS
 
 =head2 C<module>
 
 The module name to copy permissions from. It must exist in the distribution,
-and exist in the PAUSE permissions table (see
+and exist in the L<PAUSE|http://pause.perl.org> permissions table (see
 L<peek at PAUSE permissions|https://pause.perl.org/pause/authenquery?ACTION=peek_perms>).
 
-This config is optional; it defaults to the L<main module|Dist::Zilla/main_module> in the distribution.
+This config is optional; it defaults to the L<main module|Dist::Zilla/main_module>
+in the distribution.
 
 =for Pod::Coverage metadata
 
