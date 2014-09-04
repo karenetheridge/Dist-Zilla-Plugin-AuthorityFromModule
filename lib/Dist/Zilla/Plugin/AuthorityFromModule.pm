@@ -82,7 +82,7 @@ sub _package_from_file
             or $self->log_fatal('cannot open handle to ' . $file->name . ' content: ' . $!);
 
     my $mmd = Module::Metadata->new_from_handle($fh, $file->name);
-    ($mmd->packages_inside)[0];
+    first { $_ ne 'main' } $mmd->packages_inside;
 }
 
 __PACKAGE__->meta->make_immutable;

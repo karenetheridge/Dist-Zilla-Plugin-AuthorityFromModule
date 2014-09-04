@@ -17,8 +17,8 @@ my $tzil = Builder->from_config(
                 [ MetaConfig => ],
                 [ 'AuthorityFromModule' => { module => 'Foo::Bar' } ],
             ),
-            path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
-            path(qw(source lib Foo Bar.pm)) => "package Foo::Bar;\n1;\n",
+            path(qw(source lib Foo.pm)) => "use strict;\npackage Foo;\n1;\n",
+            path(qw(source lib Foo Bar.pm)) => "use strict;\npackage Foo::Bar;\n1;\n",
         },
     },
 );
