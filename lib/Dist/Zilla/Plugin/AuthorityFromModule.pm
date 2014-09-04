@@ -9,7 +9,7 @@ use Moose;
 with 'Dist::Zilla::Role::MetaProvider';
 use Moose::Util::TypeConstraints 'role_type';
 use List::Util 'first';
-use Module::Metadata;
+use Module::Metadata 1.000005;
 use namespace::autoclean;
 
 has module => (

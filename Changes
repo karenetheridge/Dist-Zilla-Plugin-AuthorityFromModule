@@ -3,6 +3,7 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
           - make one of the code paths more efficient
           - add more diagnostic messages
+          - add missing version to prereq specification
 
 0.001     2014-08-29 03:43:33Z
           - Initial release.
