@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.002     2014-09-06 01:29:49Z
           - make one of the code paths more efficient
           - add more diagnostic messages
           - add missing version to prereq specification
