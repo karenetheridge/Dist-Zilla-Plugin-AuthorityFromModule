@@ -77,7 +77,7 @@ sub _packages_from_file
     # TODO: use Dist::Zilla::Role::ModuleMetadata
     my $fh;
     ($file->can('encoding')
-        ? open $fh, sprintf('<encoding(%s)', $file->encoding), \$file->encoded_content
+        ? open $fh, sprintf('<:encoding(%s)', $file->encoding), \$file->encoded_content
         : open $fh, '<', \$file->content)
             or $self->log_fatal('cannot open handle to ' . $file->name . ' content: ' . $!);
 
