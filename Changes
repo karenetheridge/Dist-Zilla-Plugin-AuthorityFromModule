@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.004     2014-11-28 18:43:48Z
           - allow tests to pass under older Dist::Zilla by skipping testing
             non-ascii module names there
 
