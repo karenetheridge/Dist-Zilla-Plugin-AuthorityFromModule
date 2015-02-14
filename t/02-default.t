@@ -3,7 +3,7 @@
 # wrap simple_ini so we get the dist name and we can munge it to get the
 # module name.
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
