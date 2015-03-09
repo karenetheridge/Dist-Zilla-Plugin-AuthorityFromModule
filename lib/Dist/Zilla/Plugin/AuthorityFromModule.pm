@@ -29,18 +29,18 @@ has _module_name => (
                     and any { $module eq $_ } $self->_packages_from_file($_) }
                 @{ $self->zilla->files })
             {
-                $self->log_debug('found \'' . $module . '\' in ' . $file->name);
+                $self->log_debug([ 'found \'%s\' in %s', $module, $file->name ]);
                 return $module;
             }
 
-            $self->log_fatal('the module \'' . $module . '\' cannot be found in the distribution');
+            $self->log_fatal([ 'the module \'%s\' cannot be found in the distribution', $module ]);
         }
 
         $self->log_debug('no module provided; defaulting to the main module');
 
         my $file = $self->zilla->main_module;
         my ($module) = $self->_packages_from_file($file);
-        $self->log_debug('extracted package \'' . $module . '\' from ' . $file->name);
+        $self->log_debug([ 'extracted package \'%s\' from %s', $module, $file->name ]);
         $module;
     },
 );
