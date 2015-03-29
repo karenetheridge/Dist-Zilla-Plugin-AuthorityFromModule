@@ -5,6 +5,8 @@ package Dist::Zilla::Plugin::AuthorityFromModule;
 # KEYWORDS: distribution metadata authority permissions PAUSE users
 # vim: set ts=8 sts=4 sw=4 tw=78 et :
 
+our $VERSION = '0.005';
+
 use Moose;
 with 'Dist::Zilla::Role::MetaProvider',
     'Dist::Zilla::Role::ModuleMetadata';
