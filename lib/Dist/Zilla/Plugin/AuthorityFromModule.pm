@@ -6,10 +6,10 @@ package Dist::Zilla::Plugin::AuthorityFromModule;
 # vim: set ts=8 sts=4 sw=4 tw=78 et :
 
 use Moose;
-with 'Dist::Zilla::Role::MetaProvider';
+with 'Dist::Zilla::Role::MetaProvider',
+    'Dist::Zilla::Role::ModuleMetadata';
 use Moose::Util::TypeConstraints 'role_type';
 use List::Util 1.33 qw(first any);
-use Module::Metadata 1.000005;
 use namespace::autoclean;
 
 has module => (
@@ -74,14 +74,7 @@ sub _packages_from_file
 {
     my ($self, $file) = @_;
 
-    # TODO: use Dist::Zilla::Role::ModuleMetadata
-    my $fh;
-    ($file->can('encoding')
-        ? open $fh, sprintf('<:encoding(%s)', $file->encoding), \$file->encoded_content
-        : open $fh, '<', \$file->content)
-            or $self->log_fatal('cannot open handle to ' . $file->name . ' content: ' . $!);
-
-    my $mmd = Module::Metadata->new_from_handle($fh, $file->name);
+    my $mmd = $self->module_metadata_for_file($file);
     grep { $_ ne 'main' } $mmd->packages_inside;
 }
 
