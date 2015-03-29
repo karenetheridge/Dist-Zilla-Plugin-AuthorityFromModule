@@ -8,7 +8,6 @@ package Dist::Zilla::Plugin::AuthorityFromModule;
 use Moose;
 with 'Dist::Zilla::Role::MetaProvider',
     'Dist::Zilla::Role::ModuleMetadata';
-use Moose::Util::TypeConstraints 'role_type';
 use List::Util 1.33 qw(first any);
 use namespace::autoclean;
 
