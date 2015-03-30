@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+          - fix tests broken at a distance by ModuleMetadata role
 
 0.005     2015-03-29 22:46:06Z
           - now using Dist::Zilla::Role::ModuleMetadata to use a cached object

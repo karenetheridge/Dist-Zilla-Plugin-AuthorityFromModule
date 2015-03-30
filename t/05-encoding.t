@@ -45,11 +45,11 @@ cmp_deeply(
             plugins => supersetof(
                 {
                     class => 'Dist::Zilla::Plugin::AuthorityFromModule',
-                    config => {
+                    config => superhashof({
                         'Dist::Zilla::Plugin::AuthorityFromModule' => {
                             module => "Foo::\x{ca0}_\x{ca0}",
                         },
-                    },
+                    }),
                     name => 'AuthorityFromModule',
                     version => ignore,
                 },
