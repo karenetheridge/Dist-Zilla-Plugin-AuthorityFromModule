@@ -1,6 +1,6 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-Plugin-AuthorityFromModule
 
-{{$NEXT}}
+0.006     2015-03-30 04:18:37Z
           - fix tests broken at a distance by ModuleMetadata role
 
 0.005     2015-03-29 22:46:06Z
