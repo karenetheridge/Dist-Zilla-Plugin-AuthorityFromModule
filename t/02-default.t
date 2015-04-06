@@ -49,7 +49,7 @@ cmp_deeply(
                         },
                     }),
                     name => 'AuthorityFromModule',
-                    version => ignore,
+                    version => Dist::Zilla::Plugin::AuthorityFromModule->VERSION,
                 },
             ),
         }),
