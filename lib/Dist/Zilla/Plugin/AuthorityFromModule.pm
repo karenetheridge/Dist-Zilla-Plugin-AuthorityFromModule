@@ -3,7 +3,7 @@ use warnings;
 package Dist::Zilla::Plugin::AuthorityFromModule;
 # ABSTRACT: Add metadata to your distribution indicating what module to copy PAUSE permissions from
 # KEYWORDS: distribution metadata authority permissions PAUSE users
-# vim: set ts=8 sts=4 sw=4 tw=78 et :
+# vim: set ts=8 sts=4 sw=4 tw=115 et :
 
 our $VERSION = '0.007';
 
