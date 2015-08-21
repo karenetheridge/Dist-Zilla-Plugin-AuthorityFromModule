@@ -53,6 +53,7 @@ around dump_config => sub
 
     $config->{+__PACKAGE__} = {
         module => $self->_module_name,
+        blessed($self) ne __PACKAGE__ ? ( version => $VERSION ) : (),
     };
 
     return $config;
