@@ -99,7 +99,7 @@ from which module to copy L<PAUSE|http://pause.perl.org> permissions when a
 module in your distribution enters the L<PAUSE|http://pause.perl.org> index
 that has not ever previously been indexed.
 
-As of May 2016, L<PAUSE|http://pause.perl.org> now copies the permissions from the "main module" to any new modules
+As of June 2016, L<PAUSE|http://pause.perl.org> now copies the permissions from the "main module" to any new modules
 entering the index for the first time, which renders this module obsolete, with all its goals met in full. There is
 no longer any need to use this module.
 
