@@ -5,7 +5,7 @@ package Dist::Zilla::Plugin::AuthorityFromModule;
 # ABSTRACT: (DEPRECATED) Add metadata to your distribution indicating what module to copy PAUSE permissions from
 # KEYWORDS: distribution metadata authority permissions PAUSE users
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 use Moose;
 with 'Dist::Zilla::Role::MetaProvider',
