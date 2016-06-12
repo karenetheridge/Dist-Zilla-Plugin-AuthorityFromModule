@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Dist::Zilla::Plugin::AuthorityFromModule;
 # vim: set ts=8 sts=4 sw=4 tw=115 et :
-# ABSTRACT: Add metadata to your distribution indicating what module to copy PAUSE permissions from
+# ABSTRACT: (DEPRECATED) Add metadata to your distribution indicating what module to copy PAUSE permissions from
 # KEYWORDS: distribution metadata authority permissions PAUSE users
 
 our $VERSION = '0.007';
@@ -99,13 +99,20 @@ from which module to copy L<PAUSE|http://pause.perl.org> permissions when a
 module in your distribution enters the L<PAUSE|http://pause.perl.org> index
 that has not ever previously been indexed.
 
-Note that these fields aren't actually supported yet by
-L<PAUSE|http://pause.perl.org> -- that's still to come (as is figuring out
-which field name everyone prefers, and ditching the other one).
+As of May 2016, L<PAUSE|http://pause.perl.org> now copies the permissions from the "main module" to any new modules
+entering the index for the first time, which renders this module obsolete, with all its goals met in full. There is
+no longer any need to use this module.
+
+=for stopwords Colin Newell QA Hackathon
+
+For more information, see the L<pull request that made the change|https://github.com/andk/pause/pull/222>, written
+by Colin Newell at the Perl QA Hackathon, in Rugby UK, April 2016.
 
 =head1 MOTIVATION
 
-The idea is that this is a more useful piece of data for
+NOTE: The remainder of this documentation reflects how PAUSE used to work, and is retained purely for historical reasons.
+
+The idea is (was) that this is a more useful piece of data for
 L<PAUSE|http://pause.perl.org> than C<x_authority>.  Here is how the release
 process works with C<x_authority>, using L<Moose> as an example:
 
@@ -151,6 +158,7 @@ This config is optional; it defaults to the L<main module|Dist::Zilla/main_modul
 =head1 SEE ALSO
 
 =for :list
+* L<https://github.com/andk/pause/pull/222>
 * L<Dist::Zilla::Plugin::Authority>
 * L<peek at PAUSE permissions|https://pause.perl.org/pause/authenquery?ACTION=peek_perms>
 * L<What is x_authority?|http://jawnsy.wordpress.com/2011/02/20/what-is-x_authority>

@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-AuthorityFromModule
 
 {{$NEXT}}
+          - this module is now deprecated, having declared Mission
+            Accomplished \o/
 
 0.006     2015-03-30 04:18:37Z
           - fix tests broken at a distance by ModuleMetadata role
